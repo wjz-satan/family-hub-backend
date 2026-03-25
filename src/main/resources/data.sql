@@ -16,15 +16,15 @@ VALUES
 
 INSERT INTO tasks (id, family_id, title, description, priority, status, creator_id, due_date, repeat_rule, reward_points, completed_at, created_at, updated_at)
 VALUES
-    (1, 1, '打扫客厅', '周末大扫除', 'HIGH', 'IN_PROGRESS', 1, DATEADD('HOUR', 4, CURRENT_TIMESTAMP()), 'WEEKLY', 10, NULL, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-    (2, 1, '倒垃圾', '晚饭后处理', 'MEDIUM', 'DONE', 2, DATEADD('HOUR', 2, CURRENT_TIMESTAMP()), NULL, 5, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+    (1, 1, '打扫客厅', '周末大扫除', 'HIGH', 'IN_PROGRESS', 1, DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 4 HOUR), 'WEEKLY', 10, NULL, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+    (2, 1, '倒垃圾', '晚饭后处理', 'MEDIUM', 'DONE', 2, DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 2 HOUR), NULL, 5, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
 INSERT INTO task_assignees (task_id, user_id) VALUES (1, 2), (1, 3), (2, 3);
 INSERT INTO task_tags (task_id, tag_value) VALUES (1, '清洁'), (2, '日常');
 
 INSERT INTO calendar_events (id, family_id, title, description, location, start_time, end_time, all_day, color, creator_id, remind_before_minutes, repeat_rule, created_at, updated_at)
 VALUES
-    (1, 1, '接孩子放学', '校门口见', '学校', DATEADD('HOUR', 3, CURRENT_TIMESTAMP()), DATEADD('HOUR', 4, CURRENT_TIMESTAMP()), FALSE, '#FF7043', 1, 15, NULL, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+    (1, 1, '接孩子放学', '校门口见', '学校', DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 3 HOUR), DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 4 HOUR), FALSE, '#FF7043', 1, 15, NULL, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
 INSERT INTO calendar_event_participants (event_id, user_id) VALUES (1, 1), (1, 3);
 
